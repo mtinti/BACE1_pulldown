@@ -1,0 +1,18 @@
+name: myenv
+channels:
+  - bioconda
+  - conda-forge
+  - defaults
+dependencies:
+  - biopython
+  - tqdm
+  - seaborn
+  - adjusttext
+  - jupyter
+  - jupyter_contrib_nbextensions
+  - scikit-learn
+  - missingno
+  - matplotlib
+  - pandas
+  - numpy
+  - scipy
