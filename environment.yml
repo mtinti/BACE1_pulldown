@@ -4,6 +4,7 @@ channels:
   - conda-forge
   - defaults
 dependencies:
+  - future
   - biopython
   - tqdm
   - seaborn
