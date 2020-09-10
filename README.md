@@ -3,7 +3,7 @@
 
 This repository contains the data analysis of the BioID proximity assay used  to establish the BACE1 interactome in healthy neuronal cells.
 
-![fig1](Fig1.png?raw=true)
+![fig1](Fig1b.png?raw=true)
 
 ## Installation
 
