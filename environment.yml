@@ -2,6 +2,7 @@ name: myenv
 channels:
   - bioconda
   - conda-forge
+  - plotly
   - defaults
 dependencies:
   - future
@@ -14,6 +15,8 @@ dependencies:
   - scikit-learn
   - missingno
   - matplotlib
+  - matplotlib-venn
   - pandas
   - numpy
   - scipy
+  - plotly
