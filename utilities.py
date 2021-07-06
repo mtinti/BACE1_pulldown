@@ -386,7 +386,9 @@ def make_vulcano(df, ax, x='-Log10PValue',
                 fontdict=None,
                 expand_text=None,
                 force_text=None,
-                expand_points=None):
+                expand_points=None,
+                change_color=None,
+                color_main = 'b'):
     
 
     if fc_limit and pval_limit:
@@ -428,6 +430,12 @@ def make_vulcano(df, ax, x='-Log10PValue',
                                  s=point_size_selection, ax=ax, 
                                  label=label_for_selection, alpha=1, zorder=10)
         to_remove.append(df.loc[annot_index])
+        
+    if change_color:
+        df.loc[change_color[0]].plot(kind='scatter', x=x, y=y, c=change_color[1], 
+                                 s=change_color[2], ax=ax, 
+                                 label=label_for_selection, alpha=1, zorder=10)
+        to_remove.append(df.loc[change_color[0]])        
                 
 
  
@@ -437,11 +445,11 @@ def make_vulcano(df, ax, x='-Log10PValue',
         to_remove=pd.concat(to_remove)
         idx = df.index.difference(to_remove.index)
         df.loc[idx].plot(kind='scatter', x=x, y=y, ax=ax, 
-                         alpha=alpha_main,c='b', zorder=1, label=label_for_all,
+                         alpha=alpha_main, c=color_main, zorder=1, label=label_for_all,
                         s=point_size_all)
     else:
         df.plot(kind='scatter', x=x, y=y, ax=ax, 
-                alpha=alpha_main,c='b', zorder=1,label=label_for_all,s=point_size_all)
+                alpha=alpha_main,c=color_main, zorder=1,label=label_for_all,s=point_size_all)
     
     if rolling_mean:
         df = df.sort_values(x,ascending=False)
@@ -454,7 +462,7 @@ def make_vulcano(df, ax, x='-Log10PValue',
         ax.set_xlim(df[x].min()-df[x].min()*0.01,
                  df[x].max()+df[x].min()*0.01)
 
-
+    
     if add_text:
         texts = [ax.text(df.loc[i][x], df.loc[i][y],name, fontsize=text_size,fontdict=fontdict)
                                for i,name in zip(annot_index,annot_names)]
